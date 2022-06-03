@@ -1,0 +1,23 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
+function Book({ bid, image, title, author = [], refs }) {
+    let navigate = useNavigate();
+    return (
+        <figure
+            ref={refs}
+            className='book'
+            onClick={() => navigate(`book/detail/${bid}`)}
+        >
+            <img className='book__img' src={image} alt={title + " image"}></img>
+            <figcaption className='book_caption'>
+                <p className='book__title'>{title.trim()}</p>
+                <p className='book__author'>
+                    {author.length > 0 && `by: ${author.join(", ")}`}
+                </p>
+            </figcaption>
+        </figure>
+    );
+}
+
+export default Book;

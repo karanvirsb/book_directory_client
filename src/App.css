@@ -1,0 +1,277 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background-color: rgb(225, 226, 239);
+}
+
+img {
+    max-width: 100%;
+}
+
+/* BTN class */
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    padding: 0.45rem 1.25rem;
+    text-transform: capitalize;
+    transition: 250ms ease-in;
+}
+
+/* NAVBAR COMPONENT */
+
+.header {
+    background-color: white;
+    box-shadow: 0px 1px 2px black;
+    padding: 1rem;
+    height: max-content;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__logo {
+    color: rgb(71, 71, 199);
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.nav {
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav_btn {
+    background-color: transparent;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-right: 4rem;
+}
+
+.nav_btn:hover {
+    outline: 1px solid rgb(71, 71, 199);
+    color: rgb(71, 71, 199);
+}
+
+.logout_btn {
+    background-color: rgb(50, 50, 53);
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.logout_btn:hover {
+    background-color: transparent;
+    color: rgb(50, 50, 53);
+    font-weight: 600;
+    outline: 1px solid rgb(50, 50, 53);
+}
+
+/* BOOK COMPONENT */
+/* TODO MAKE THIS RESPPNSIVE */
+.book {
+    background-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 550px;
+    padding: 0.5rem;
+    transition: all 250ms forwards ease-in;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.book:hover {
+    box-shadow: 1px 2px 4px black;
+    transform: scale(1.05);
+}
+
+.book__img {
+    height: 350px;
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: contain;
+}
+
+.book_caption {
+    border-radius: 0px 0px 15px 15px;
+    background-color: transparent;
+    color: #000;
+    padding: 1rem;
+    width: 100%;
+    transition: 300ms ease-in;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* .book:hover .book_caption {
+    background-color: hsla(0, 0%, 7%, 75%);
+    color: white;
+    visibility: visible;
+    transition: all 250ms ease-in;
+} */
+
+.book__title {
+    letter-spacing: 1px;
+    font-size: 1.25rem;
+}
+
+.book__author {
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+/* MODAL COMPONENT */
+
+.modal_bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.5);
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+}
+
+/* DELETE MODAL  */
+
+.modal_delete {
+    background-color: white;
+    border-radius: 5px;
+    height: clamp(275px, 75%, 350px);
+    width: clamp(350px, 75%, 450px);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal_desc {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.modal_buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.cancel_btn {
+    background-color: hsl(0, 45%, 50%);
+    color: white;
+    width: 100px;
+}
+
+.cancel_btn:hover {
+    background-color: transparent;
+    color: hsl(0, 45%, 50%);
+    outline: 2px solid black;
+    font-weight: 600;
+}
+
+.confirm_btn {
+    background-color: hsl(240, 45%, 50%);
+    color: white;
+    width: 100px;
+}
+
+.confirm_btn:hover {
+    background-color: transparent;
+    color: hsl(240, 45%, 50%);
+    outline: 2px solid black;
+    font-weight: 600;
+}
+
+/* EDIT AND ADD MODAL */
+.modal {
+    background-color: white;
+    border-radius: 5px;
+    height: clamp(350px, 75%, 650px);
+    width: clamp(350px, 75%, 650px);
+    padding: 2rem;
+    overflow-y: scroll;
+}
+
+.modal_form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.modal_inputContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal__label {
+    align-self: flex-start;
+    font-size: 1.25rem;
+    text-transform: capitalize;
+}
+
+.modal__input {
+    font-size: 1.15rem;
+    padding: 0.25rem 0.75rem;
+    width: clamp(250px, 75%, 350px);
+}
+
+textarea.modal__input {
+    resize: vertical;
+    line-height: 40px;
+}
+
+.modal_buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* TOOLTIP COMPONENT */
+
+.tool_tip {
+    display: block;
+    background-color: #121212;
+    border-radius: 5px;
+    color: white;
+    padding: 0.45rem 0.75rem;
+    font-size: 1rem;
+    width: clamp(max-content, 75%, 45ch);
+    white-space: pre-line;
+}
+
+.off_screen {
+    display: none;
+}
+
+/* BANNER COMPONENT */
+
+.banner {
+    border-radius: 5px;
+    padding: 0.25rem 0.75rem;
+    text-align: center;
+}
+
+.errorBanner {
+    background-color: hsl(0, 74%, 56%);
+    color: white;
+    font-size: 1.25rem;
+}
