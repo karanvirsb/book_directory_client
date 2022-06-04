@@ -61,8 +61,9 @@
 }
 
 .add_bookBtn:hover {
-    background-color: hsl(266, 43%, 65%);
-    color: black;
+    background-color: transparent;
+    color: rgb(73, 73, 196);
+    outline: 2px solid rgb(73, 73, 196);
 }
 
 .book_section {
