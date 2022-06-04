@@ -86,7 +86,7 @@ img {
     background-color: transparent;
     border-radius: 5px;
     cursor: pointer;
-    height: 550px;
+    height: 510px;
     padding: 0.5rem;
     transition: all 250ms forwards ease-in;
     display: flex;
@@ -100,9 +100,8 @@ img {
 }
 
 .book__img {
-    height: 350px;
     width: 100%;
-    aspect-ratio: 4/5;
+    aspect-ratio: 1;
     object-fit: contain;
 }
 
