@@ -15,9 +15,9 @@ function Navbar() {
         <header className='header'>
             <div className='header__logo'>Book Finder</div>
             <nav className='nav'>
-                <button className='nav_btn btn' onClick={() => navigate("/")}>
+                {/* <button className='nav_btn btn' onClick={() => navigate("/")}>
                     home
-                </button>
+                </button> */}
                 <button className='logout_btn btn' onClick={logoutEvent}>
                     logout
                 </button>
