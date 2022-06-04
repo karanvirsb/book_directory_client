@@ -72,17 +72,17 @@ function App() {
                                 element={<BookDetailsUser></BookDetailsUser>}
                             ></Route>
                         </Route>
+                    </Route>
+                </Route>
+                <Route element={<LayoutsWithNavbar></LayoutsWithNavbar>}>
+                    <Route
+                        element={<RequireAuth allowedRoles={[1984, 5150]} />}
+                    >
+                        <Route path='/admin' element={<Home></Home>}></Route>
                         <Route
-                            element={
-                                <RequireAuth allowedRoles={[1984, 5150]} />
-                            }
-                        >
-                            <Route path='admin' element={<Home></Home>}></Route>
-                            <Route
-                                path='admin/book/detail/:id'
-                                element={<BookDetails></BookDetails>}
-                            ></Route>
-                        </Route>
+                            path='/admin/book/detail/:id'
+                            element={<BookDetails></BookDetails>}
+                        ></Route>
                     </Route>
                 </Route>
 
