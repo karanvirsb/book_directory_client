@@ -217,8 +217,9 @@ img {
 
 .modal_inputContainer {
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     justify-content: space-between;
-    align-items: center;
 }
 
 .modal__label {
@@ -230,7 +231,7 @@ img {
 .modal__input {
     font-size: 1.15rem;
     padding: 0.25rem 0.75rem;
-    width: clamp(250px, 75%, 350px);
+    width: 100%;
 }
 
 textarea.modal__input {
