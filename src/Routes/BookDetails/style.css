@@ -71,7 +71,7 @@
     height: max-content;
     flex: 0 1;
     gap: 2rem;
-    margin-inline: 15rem;
+    margin-inline: clamp(0.5rem, 10vw, 15rem);
 }
 
 .details__image {
@@ -109,7 +109,7 @@
 }
 .details_descContainer {
     margin-block: 3rem;
-    margin-inline: 15rem;
+    margin-inline: clamp(0.5rem, 10vw, 15rem);
     padding: 1rem;
 }
 
@@ -123,4 +123,18 @@
 .details__description {
     padding: 1rem;
     line-height: 3.5ch;
+}
+
+@media only screen and (max-width: 800px) {
+    .details_container {
+        flex-direction: column;
+    }
+    .detail_section {
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    .button_container {
+        justify-content: center;
+        flex-direction: column;
+    }
 }
