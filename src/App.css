@@ -151,7 +151,7 @@ img {
     background-color: white;
     border-radius: 5px;
     height: clamp(275px, 75%, 350px);
-    width: clamp(350px, 75%, 450px);
+    width: clamp(250px, 75%, 450px);
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
