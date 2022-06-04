@@ -33,7 +33,7 @@ function BookDetails() {
                     <div className='button_container'>
                         <button
                             className='backHome_btn'
-                            onClick={() => navigate("/")}
+                            onClick={() => navigate("/admin")}
                         >
                             back home
                         </button>
