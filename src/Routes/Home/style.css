@@ -76,6 +76,5 @@
 .book_container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    width: min(90%, 1080px);
     gap: 1rem;
 }
