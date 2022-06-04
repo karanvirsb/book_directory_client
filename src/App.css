@@ -81,12 +81,11 @@ img {
 }
 
 /* BOOK COMPONENT */
-/* TODO MAKE THIS RESPPNSIVE */
+
 .book {
     background-color: transparent;
     border-radius: 5px;
     cursor: pointer;
-    height: 510px;
     padding: 0.5rem;
     transition: all 250ms forwards ease-in;
     display: flex;
