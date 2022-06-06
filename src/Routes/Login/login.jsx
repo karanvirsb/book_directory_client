@@ -61,6 +61,42 @@ function Login() {
         }
     };
 
+    const loadDemoUser = async () => {
+        try {
+            const response = await axios.post(
+                LOGIN_URL,
+                { user: "demo", password: "Demo_1234" },
+                {
+                    headers: { "Context-Type": "application/json" },
+                    withCredentials: true,
+                }
+            );
+
+            const accessToken = response?.data?.accessToken;
+            setAuth({ user, accessToken });
+            navigate("/demo", { replace: true });
+            setUser("");
+            setPassword("");
+        } catch (err) {
+            // console.log(err);
+            if (!err?.response) {
+                setErrMsg("No Server Response");
+                setIsError(true);
+            } else if (err.response?.status === 400) {
+                setErrMsg("The username or password was incorrect");
+                setIsError(true);
+            } else if (err.response?.status === 401) {
+                setErrMsg("Unauthorized");
+                setIsError(true);
+            } else {
+                setErrMsg("Login Failed");
+                setIsError(true);
+            }
+
+            //errRef.current.focus();
+        }
+    };
+
     const togglePersist = () => {
         setPersist((prev) => !prev);
     };
@@ -148,6 +184,9 @@ function Login() {
                         onClick={() => navigate("/register")}
                     >
                         register
+                    </button>
+                    <button type='button' onClick={() => loadDemoUser()}>
+                        demo admin
                     </button>
                 </div>
             </form>
