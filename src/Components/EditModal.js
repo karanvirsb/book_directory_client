@@ -42,8 +42,11 @@ const EditModal = ({ book }) => {
             form["bid"] = book.bid;
             const otherBooks = books.filter((b) => b.bid !== book.bid);
             setBooks([...otherBooks, form]);
-            toast.success("Book was edited but not shown due to persistency");
             closeModal();
+            toast.success("Book was edited");
+            setTimeout(() => {
+                window.location.reload();
+            }, 3000);
             return;
         }
         const bookData = getFormData(e.target);
