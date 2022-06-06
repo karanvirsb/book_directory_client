@@ -23,6 +23,11 @@ import { useGlobalContext } from "./Helper/AppContext";
 import Navbar from "./Components/Navbar";
 import { AnimatePresence } from "framer-motion";
 import "./App.css";
+import AddModal from "./Components/AddModal";
+import EditModal from "./Components/EditModal";
+import DeleteModal from "./Components/DeleteModal";
+import DemoBookDetails from "./Routes/BookDetails/book-detail-demo";
+import DemoHome from "./Routes/Home/home-demo";
 
 if (process.env.NODE_ENV === "production") {
     disableReactDevTools();
@@ -43,10 +48,17 @@ function App() {
         <Router>
             <AnimatePresence exitBeforeEnter={true} initial={false}>
                 {modalSettings.open && (
-                    <Modal
-                        type={modalSettings.type}
-                        book={modalSettings?.book}
-                    ></Modal>
+                    <Modal>
+                        {modalSettings.type === "ADD" ? (
+                            <AddModal></AddModal>
+                        ) : modalSettings.type === "EDIT" ? (
+                            <EditModal book={modalSettings.book}></EditModal>
+                        ) : (
+                            <DeleteModal
+                                book={modalSettings.book}
+                            ></DeleteModal>
+                        )}
+                    </Modal>
                 )}
             </AnimatePresence>
 
@@ -58,7 +70,6 @@ function App() {
                     path='registration-successful'
                     element={<SuccessRegistration></SuccessRegistration>}
                 ></Route>
-
                 {/* Protected routes */}
                 <Route element={<PersistLogin />}>
                     <Route element={<LayoutsWithNavbar></LayoutsWithNavbar>}>
@@ -85,7 +96,18 @@ function App() {
                         ></Route>
                     </Route>
                 </Route>
-
+                <Route element={<LayoutsWithNavbar></LayoutsWithNavbar>}>
+                    <Route element={<RequireAuth allowedRoles={[2000]} />}>
+                        <Route
+                            path='/demo'
+                            element={<DemoHome></DemoHome>}
+                        ></Route>
+                        <Route
+                            path='/demo/book/detail/:id'
+                            element={<DemoBookDetails></DemoBookDetails>}
+                        ></Route>
+                    </Route>
+                </Route>
                 {/* Catch all other routes */}
                 <Route path='*' element={<div>404 Not Found</div>}></Route>
             </Routes>
