@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { axiosPrivate } from "../Api/axios";
 import { motion } from "framer-motion";
 import useGetRoles from "../Hooks/useGetRoles";
+import { toast } from "react-toastify";
 
 const DeleteModal = ({ book }) => {
     const navigate = useNavigate();
@@ -28,16 +29,29 @@ const DeleteModal = ({ book }) => {
             const otherBooks = books.filter((b) => b.bid !== book.bid);
             setBooks(otherBooks);
             closeModal();
-            navigate("/demo");
+            toast.success("Book has been deleted");
+            setTimeout(() => {
+                navigate("/demo");
+            }, 3000);
             return;
         }
         try {
-            const res = await axiosPrivate.delete("/api/books/" + book.bid);
-            const message = await res.data;
-            // todo success message
-            navigate("/");
-            alert(message.message);
             closeModal();
+            toast.promise(
+                axiosPrivate.delete("/api/books/" + book.bid),
+                {
+                    pending: "Deleting the book",
+                    success: "Book has been deleted",
+                    error: "Book could not be deleted",
+                },
+                {
+                    onClose: () => {
+                        navigate("/admin");
+                    },
+                }
+            );
+            // const res = await axiosPrivate.delete("/api/books/" + book.bid);
+            // const message = await res.data;
         } catch (err) {
             if (err?.response?.status === 403) {
                 navigate("/login", {
