@@ -185,7 +185,11 @@ function Login() {
                     >
                         register
                     </button>
-                    <button type='button' onClick={() => loadDemoUser()}>
+                    <button
+                        className='lf_demoBtn btn'
+                        type='button'
+                        onClick={() => loadDemoUser()}
+                    >
                         demo admin
                     </button>
                 </div>

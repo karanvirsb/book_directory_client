@@ -84,6 +84,19 @@ button.lf_loginBtn {
     color: hsl(240, 65%, 54%);
 }
 
+button.lf_demoBtn {
+    margin-top: 1.5rem;
+    background-color: hsl(240, 50%, 65%);
+    color: white;
+    text-transform: uppercase;
+}
+
+.lf_demoBtn:hover {
+    background-color: transparent;
+    outline: 1px solid hsl(240, 50%, 50%);
+    color: hsl(240, 50%, 50%);
+}
+
 .lf_registerBtn:hover {
     background-color: transparent;
     outline: 1px solid gray;
