@@ -21,13 +21,15 @@ import PersistLogin from "./Components/PersistLogin";
 import Modal from "./Components/Modal";
 import { useGlobalContext } from "./Helper/AppContext";
 import Navbar from "./Components/Navbar";
-import { AnimatePresence } from "framer-motion";
-import "./App.css";
 import AddModal from "./Components/AddModal";
 import EditModal from "./Components/EditModal";
 import DeleteModal from "./Components/DeleteModal";
 import DemoBookDetails from "./Routes/BookDetails/book-detail-demo";
 import DemoHome from "./Routes/Home/home-demo";
+import { AnimatePresence } from "framer-motion";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
 if (process.env.NODE_ENV === "production") {
     disableReactDevTools();
@@ -46,6 +48,16 @@ function App() {
     const { modalSettings } = useGlobalContext();
     return (
         <Router>
+            <ToastContainer
+                autoClose={8000}
+                position='top-right'
+                hideProgressBar={false}
+                newestOnTop={false}
+                pauseOnFocusLoss={true}
+                pauseOnHover={true}
+                draggable
+                draggablePercent={90}
+            ></ToastContainer>
             <AnimatePresence exitBeforeEnter={true} initial={false}>
                 {modalSettings.open && (
                     <Modal>
