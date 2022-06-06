@@ -1,39 +1,58 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useGlobalContext } from "../../Helper/AppContext";
-import useBookSearch from "../../Hooks/useBookSearch";
-import useGetBook from "../../Hooks/useGetBook";
+import useAxiosPrivate from "../../Hooks/useAxiosPrivate";
+// import useBookSearch from "../../Hooks/useBookSearch";
+// import useGetBook from "../../Hooks/useGetBook";
 import "./style.css";
 
-function BookDetails() {
-    const navigate = useNavigate();
+function DemoBookDetails() {
     const { id } = useParams();
-    const [bookDetail, setBookDetail] = useState({});
-    const { openModal } = useGlobalContext();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const axiosPrivate = useAxiosPrivate();
+    const { openModal, books } = useGlobalContext();
+    const [detailBook, setDetailBook] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
-    const { data, isLoading, isError } = useGetBook(`/api/books/`, id);
+    function getBook() {
+        setIsLoading(true);
+        axiosPrivate
+            .get(`${"/api/books/"}${id}`)
+            .then((res) => {
+                console.log(res.data);
+                setDetailBook(res.data);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                if (err?.response?.status === 403) {
+                    navigate("/login", {
+                        state: { from: location },
+                        replace: true,
+                    });
+                }
+            });
+    }
 
     useEffect(() => {
-        if (isError) {
-            return;
+        if (books.find((book) => book.bid === id).created === true) {
+            setDetailBook(books.find((book) => book.bid === id));
+            setIsLoading(false);
+        } else {
+            getBook();
         }
-        if (!isLoading) {
-            setBookDetail(data);
-        }
-    }, [isLoading, data, isError]);
+    }, []);
 
     return (
         <section className='detail_section'>
-            {isError ? (
-                <div className='error'>error</div>
-            ) : isLoading ? (
+            {isLoading ? (
                 <div className='loading'>loading...</div>
             ) : (
                 <>
                     <div className='button_container'>
                         <button
                             className='backHome_btn'
-                            onClick={() => navigate("/admin")}
+                            onClick={() => navigate("/demo")}
                         >
                             back home
                         </button>
@@ -43,7 +62,7 @@ function BookDetails() {
                                 onClick={() =>
                                     openModal({
                                         type: "EDIT",
-                                        book: bookDetail,
+                                        book: detailBook,
                                     })
                                 }
                             >
@@ -54,7 +73,7 @@ function BookDetails() {
                                 onClick={() =>
                                     openModal({
                                         type: "DELETE",
-                                        book: bookDetail,
+                                        book: detailBook,
                                     })
                                 }
                             >
@@ -65,32 +84,32 @@ function BookDetails() {
                     <div className='details_container'>
                         <img
                             className='details__image'
-                            src={bookDetail.image}
+                            src={detailBook.image}
                             alt=''
                         />
                         <div className='details_info'>
                             <p className='details__header'>
-                                {bookDetail.title}{" "}
+                                {detailBook.title}{" "}
                                 <span className='details__date'>
-                                    {bookDetail.date_info}
+                                    {detailBook.date_info}
                                 </span>
                             </p>
                             <p className='details__author'>
-                                {bookDetail?.author?.length > 1
-                                    ? `Authors: ${bookDetail.author.join(", ")}`
-                                    : `Author: ${bookDetail.author}`}
+                                {detailBook?.author?.length > 1
+                                    ? `Authors: ${detailBook.author.join(", ")}`
+                                    : `Author: ${detailBook.author}`}
                             </p>
                             <p className='details__publisher'>
-                                Publisher: {bookDetail.publisher}
+                                Publisher: {detailBook.publisher}
                             </p>
                             <p className='details__category'>
-                                Category: {bookDetail.category}
+                                Category: {detailBook.category}
                             </p>
                             <p className='details__language'>
-                                Language: {bookDetail.language}{" "}
+                                Language: {detailBook.language}{" "}
                             </p>
                             <p className='details__pages'>
-                                Pages: {bookDetail.pages}
+                                Pages: {detailBook.pages}
                             </p>
                         </div>
                     </div>
@@ -98,7 +117,7 @@ function BookDetails() {
                         <h3 className='desc__title'>Description</h3>
                         <hr />
                         <p className='details__description'>
-                            {bookDetail.description}
+                            {detailBook.description}
                         </p>
                     </section>
                 </>
@@ -107,4 +126,4 @@ function BookDetails() {
     );
 }
 
-export default BookDetails;
+export default DemoBookDetails;
