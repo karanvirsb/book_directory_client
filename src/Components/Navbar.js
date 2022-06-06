@@ -8,6 +8,7 @@ function Navbar() {
     const logout = useLogout();
 
     const logoutEvent = async () => {
+        sessionStorage.clear();
         await logout();
         navigate("/login");
     };
