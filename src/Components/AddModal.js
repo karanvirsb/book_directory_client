@@ -4,6 +4,7 @@ import { useGlobalContext } from "../Helper/AppContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { axiosPrivate } from "../Api/axios";
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
 import useGetFormData from "../Hooks/useGetFormData";
 import useValidateImage from "../Hooks/useValidateImage";
 import useGetRoles from "../Hooks/useGetRoles";
@@ -38,21 +39,30 @@ const AddModal = () => {
             form["created"] = true;
             setBooks((prev) => [...prev, form]);
             closeModal();
+            toast.success("Added the book");
             return;
         }
         try {
-            const res = await axiosPrivate.post(
-                "/api/books/add",
-                getFormData(e.target),
-                {
+            // const res = await axiosPrivate.post(
+            //     "/api/books/add",
+            //     getFormData(e.target),
+            //     {
+            //         headers: { "Content-Type": "multipart/form-data" },
+            //     }
+            //     );
+            closeModal();
+            // const message = await res.data;
+            toast.promise(
+                axiosPrivate.post("/api/books/add", getFormData(e.target), {
                     headers: { "Content-Type": "multipart/form-data" },
+                }),
+                {
+                    pending: "Adding book",
+                    success: "Book has been added",
+                    error: "Could not add the book",
                 }
             );
-            const message = await res.data;
-
-            navigate("/");
-            alert(message.message);
-            closeModal();
+            // alert(message.message);
         } catch (err) {
             if (err?.response?.status === 403) {
                 navigate("/login", {
