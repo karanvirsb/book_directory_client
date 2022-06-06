@@ -18,7 +18,7 @@ function DemoBookDetails() {
     function getBook() {
         setIsLoading(true);
         axiosPrivate
-            .get(`${"/api/books/"}${id}`)
+            .get(`/api/books/${id}`)
             .then((res) => {
                 console.log(res.data);
                 setDetailBook(res.data);
@@ -35,7 +35,7 @@ function DemoBookDetails() {
     }
 
     useEffect(() => {
-        if (books.find((book) => book.bid === id).created === true) {
+        if (books.find((book) => book.bid === id)?.created === true) {
             setDetailBook(books.find((book) => book.bid === id));
             setIsLoading(false);
         } else {

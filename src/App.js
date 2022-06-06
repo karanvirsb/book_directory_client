@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     BrowserRouter as Router,
     Routes,
     Route,
     Outlet,
+    useLocation,
 } from "react-router-dom";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import {
@@ -30,6 +31,7 @@ import { AnimatePresence } from "framer-motion";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
+import ScrollToTop from "./Components/ScrollToTop";
 
 if (process.env.NODE_ENV === "production") {
     disableReactDevTools();
@@ -48,6 +50,7 @@ function App() {
     const { modalSettings } = useGlobalContext();
     return (
         <Router>
+            <ScrollToTop></ScrollToTop>
             <ToastContainer
                 autoClose={8000}
                 position='top-right'

@@ -40,10 +40,16 @@ const EditModal = ({ book }) => {
         if (verifyRoles([2000])) {
             const form = getJsonData(e.target);
             form["bid"] = book.bid;
+            if (book?.created) {
+                form["created"] = true;
+            }
+            console.log(form);
             const otherBooks = books.filter((b) => b.bid !== book.bid);
             setBooks([...otherBooks, form]);
             closeModal();
-            toast.success("Book was edited");
+            toast.success(
+                "Book was edited but not shown due to this being a demo"
+            );
             setTimeout(() => {
                 window.location.reload();
             }, 3000);
