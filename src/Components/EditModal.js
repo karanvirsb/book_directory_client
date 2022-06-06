@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import useGetFormData from "../Hooks/useGetFormData";
 import useValidateImage from "../Hooks/useValidateImage";
 import useGetRoles from "../Hooks/useGetRoles";
+import { toast } from "react-toastify";
 
 const EditModal = ({ book }) => {
     const navigate = useNavigate();
@@ -29,32 +30,50 @@ const EditModal = ({ book }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!isImageValid) {
-            console.log("here");
-            // TODO use react toastify
+        if (
+            !isImageValid &&
+            e.target.elements["image"].files[0] !== undefined
+        ) {
+            toast.error("Image format is incorrect", { toastId: 1 });
             return;
         }
         if (verifyRoles([2000])) {
-            console.log("here");
             const form = getJsonData(e.target);
             form["bid"] = book.bid;
             const otherBooks = books.filter((b) => b.bid !== book.bid);
-            console.log(otherBooks);
             setBooks([...otherBooks, form]);
+            toast.success("Book was edited but not shown due to persistency");
             closeModal();
             return;
         }
         const bookData = getFormData(e.target);
         bookData.append("bid", book.bid);
         try {
-            const res = await axiosPrivate.put("/api/books/", bookData, {
-                headers: { "Content-Type": "multipart/form-data" },
-            });
-            const message = await res.data;
-
-            navigate("/");
-            alert(message.message);
             closeModal();
+            toast.promise(
+                axiosPrivate.put("/api/books/", bookData, {
+                    headers: { "Content-Type": "multipart/form-data" },
+                }),
+                {
+                    pending: "Editing book",
+                    success: {
+                        render() {
+                            return "Book has been editted";
+                        },
+                    },
+                    error: "Could not edit the book",
+                },
+                {
+                    onClose: () => {
+                        window.location.reload();
+                    },
+                    autoClose: 5000,
+                }
+            );
+            // const res = await axiosPrivate.put("/api/books/", bookData, {
+            //     headers: { "Content-Type": "multipart/form-data" },
+            // });
+            // const message = await res.data;
         } catch (err) {
             if (err?.response?.status === 403) {
                 navigate("/login", {
