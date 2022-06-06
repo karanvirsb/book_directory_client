@@ -1,13 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../Helper/AppContext";
+import useGetRoles from "../Hooks/useGetRoles";
 
 function Book({ bid, image, title, author = [], refs }) {
     let navigate = useNavigate();
+    const { verifyRoles } = useGetRoles();
+    const { books } = useGlobalContext();
     return (
         <figure
             ref={refs}
             className='book'
-            onClick={() => navigate(`book/detail/${bid}`)}
+            onClick={() =>
+                verifyRoles([2000])
+                    ? navigate(`/demo/book/detail/${bid}`)
+                    : navigate(`book/detail/${bid}`)
+            }
         >
             <img className='book__img' src={image} alt={title + " image"}></img>
             <figcaption className='book_caption'>
