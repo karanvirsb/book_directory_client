@@ -55,16 +55,17 @@ const AddModal = () => {
             closeModal();
             const form = getFormData(e.target);
             form["image_type"] = imageType;
-            toast.promise(
-                axiosPrivate.post("/api/books/add", form, {
-                    headers: { "Content-Type": "multipart/form-data" },
-                }),
-                {
-                    pending: "Adding book",
-                    success: "Book has been added",
-                    error: "Could not add the book",
-                }
-            );
+            console.log(form);
+            // toast.promise(
+            //     axiosPrivate.post("/api/books/add", form, {
+            //         headers: { "Content-Type": "multipart/form-data" },
+            //     }),
+            //     {
+            //         pending: "Adding book",
+            //         success: "Book has been added",
+            //         error: "Could not add the book",
+            //     }
+            // );
             // alert(message.message);
         } catch (err) {
             if (err?.response?.status === 403) {
