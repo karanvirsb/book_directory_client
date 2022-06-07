@@ -65,7 +65,7 @@ function BookDetails() {
                     <div className='details_container'>
                         <img
                             className='details__image'
-                            src={bookDetail.image}
+                            src={bookDetail.image?.url}
                             alt=''
                         />
                         <div className='details_info'>
