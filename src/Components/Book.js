@@ -17,7 +17,11 @@ function Book({ bid, image, title, author = [], refs }) {
                     : navigate(`book/detail/${bid}`)
             }
         >
-            <img className='book__img' src={image} alt={title + " image"}></img>
+            <img
+                className='book__img'
+                src={image?.url}
+                alt={title + " image"}
+            ></img>
             <figcaption className='book_caption'>
                 <p className='book__title'>{title.trim()}</p>
                 <p className='book__author'>
