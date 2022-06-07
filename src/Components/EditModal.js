@@ -14,6 +14,7 @@ const EditModal = ({ book }) => {
     const location = useLocation();
     const { getFormData, getJsonData } = useGetFormData();
     const [imageToValidate, setImageToValidate] = useState("");
+    const [imageType, setImageType] = useState("");
     const { isImageValid } = useValidateImage(imageToValidate);
     const { closeModal, books, setBooks } = useGlobalContext();
     const { verifyRoles } = useGetRoles();
@@ -43,6 +44,7 @@ const EditModal = ({ book }) => {
             if (book?.created) {
                 form["created"] = true;
             }
+            form["image_type"] = imageType;
             console.log(form);
             const otherBooks = books.filter((b) => b.bid !== book.bid);
             setBooks([...otherBooks, form]);
@@ -56,7 +58,8 @@ const EditModal = ({ book }) => {
             return;
         }
         const bookData = getFormData(e.target);
-        bookData.append("bid", book.bid);
+        bookData["bid"] = book.bid;
+        bookData["image_type"] = imageType;
         try {
             closeModal();
             toast.promise(
@@ -98,6 +101,7 @@ const EditModal = ({ book }) => {
         console.log(e.target.files[0]);
         if (e.target.files[0] !== null || e.target.files[0] !== undefined) {
             setImageToValidate(e.target.files[0]);
+            setImageType(e.target.files[0].type);
         }
     };
 

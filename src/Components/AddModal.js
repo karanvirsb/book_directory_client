@@ -11,6 +11,7 @@ import useGetRoles from "../Hooks/useGetRoles";
 
 const AddModal = () => {
     const [imageToValidate, setImageToValidate] = useState("");
+    const [imageType, setImageType] = useState("");
     const navigate = useNavigate();
     const location = useLocation();
     const { getFormData, getJsonData } = useGetFormData();
@@ -37,6 +38,7 @@ const AddModal = () => {
         if (verifyRoles([2000])) {
             const form = getJsonData(e.target);
             form["created"] = true;
+            form["image_type"] = imageType;
             setBooks((prev) => [...prev, form]);
             closeModal();
             toast.success("Added the book");
@@ -51,9 +53,10 @@ const AddModal = () => {
             //     }
             //     );
             closeModal();
-            // const message = await res.data;
+            const form = getFormData(e.target);
+            form["image_type"] = imageType;
             toast.promise(
-                axiosPrivate.post("/api/books/add", getFormData(e.target), {
+                axiosPrivate.post("/api/books/add", form, {
                     headers: { "Content-Type": "multipart/form-data" },
                 }),
                 {
@@ -76,6 +79,7 @@ const AddModal = () => {
 
     const validateImages = (e) => {
         setImageToValidate(e.target.files[0]);
+        setImageType(e.target.files[0].type);
     };
 
     return (
