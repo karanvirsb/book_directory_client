@@ -58,8 +58,8 @@ const EditModal = ({ book }) => {
             return;
         }
         const bookData = getFormData(e.target);
-        bookData["bid"] = book.bid;
-        bookData["image_type"] = imageType;
+        bookData.append("bid", book.bid);
+        bookData.append("image_type", imageType);
         try {
             closeModal();
             toast.promise(
