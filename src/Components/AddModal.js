@@ -66,7 +66,7 @@ const AddModal = () => {
                     error: "Could not add the book",
                 }
             );
-            alert(message.message);
+            // alert(message.message);
         } catch (err) {
             if (err?.response?.status === 403) {
                 navigate("/login", {
