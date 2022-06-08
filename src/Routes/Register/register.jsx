@@ -29,7 +29,6 @@ function Register() {
 
     const [errMsg, setErrMsg] = useState("");
     const [isError, setIsError] = useState(false);
-    const [success, setSuccess] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

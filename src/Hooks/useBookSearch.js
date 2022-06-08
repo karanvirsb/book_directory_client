@@ -19,7 +19,6 @@ function useBookSearch(url, pageNumber) {
     }, [url]);
 
     useEffect(() => {
-        console.log(pageNumber);
         let isMounted = true;
         const cancelTokenSource = axios.CancelToken.source();
 

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useGlobalContext } from "../../Helper/AppContext";
 import useAxiosPrivate from "../../Hooks/useAxiosPrivate";
-// import useBookSearch from "../../Hooks/useBookSearch";
-// import useGetBook from "../../Hooks/useGetBook";
 import "./style.css";
 
 function DemoBookDetails() {
@@ -20,7 +18,6 @@ function DemoBookDetails() {
         axiosPrivate
             .get(`/api/books/${id}`)
             .then((res) => {
-                console.log(res.data);
                 setDetailBook(res.data);
                 setIsLoading(false);
             })

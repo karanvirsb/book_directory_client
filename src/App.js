@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
     BrowserRouter as Router,
     Routes,
     Route,
     Outlet,
-    useLocation,
 } from "react-router-dom";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 import {

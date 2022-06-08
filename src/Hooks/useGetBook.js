@@ -13,7 +13,6 @@ const useGetBook = (url, id) => {
     });
 
     useEffect(() => {
-        console.log("getBook");
         let isMounted = true;
         const controller = new AbortController();
         setDataInfo((prev) => {

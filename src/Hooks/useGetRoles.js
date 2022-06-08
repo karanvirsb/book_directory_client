@@ -5,7 +5,6 @@ const useGetRoles = () => {
     const { auth } = useAuth();
 
     const verifyRoles = (list) => {
-        console.log(list);
         const decoded = auth?.accessToken
             ? jwt_decode(auth.accessToken)
             : undefined;

@@ -41,13 +41,15 @@ const EditModal = ({ book }) => {
         if (verifyRoles([2000])) {
             const form = getJsonData(e.target);
             form["bid"] = book.bid;
+
             if (book?.created) {
                 form["created"] = true;
             }
             form["image_type"] = imageType;
-            console.log(form);
+
             const otherBooks = books.filter((b) => b.bid !== book.bid);
             setBooks([...otherBooks, form]);
+
             closeModal();
             toast.success(
                 "Book was edited but not shown due to this being a demo"
@@ -82,10 +84,6 @@ const EditModal = ({ book }) => {
                     autoClose: 5000,
                 }
             );
-            // const res = await axiosPrivate.put("/api/books/", bookData, {
-            //     headers: { "Content-Type": "multipart/form-data" },
-            // });
-            // const message = await res.data;
         } catch (err) {
             if (err?.response?.status === 403) {
                 navigate("/login", {
@@ -98,7 +96,6 @@ const EditModal = ({ book }) => {
     };
 
     const validateImages = (e) => {
-        console.log(e.target.files[0]);
         if (e.target.files[0] !== null || e.target.files[0] !== undefined) {
             setImageToValidate(e.target.files[0]);
             setImageType(e.target.files[0].type);

@@ -11,9 +11,8 @@ const useValidateImage = (file) => {
         if (file === null || file === undefined) {
             return;
         }
-        console.log(file);
+
         const isValidImage = await validateImage(file);
-        console.log(isValidImage);
         setIsImageValid(isValidImage);
     };
 

@@ -50,8 +50,6 @@ const DeleteModal = ({ book }) => {
                     },
                 }
             );
-            // const res = await axiosPrivate.delete("/api/books/" + book.bid);
-            // const message = await res.data;
         } catch (err) {
             if (err?.response?.status === 403) {
                 navigate("/login", {

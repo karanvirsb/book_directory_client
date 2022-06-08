@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGlobalContext } from "../../Helper/AppContext";
-import useBookSearch from "../../Hooks/useBookSearch";
 import useGetBook from "../../Hooks/useGetBook";
 import "./style.css";
 
