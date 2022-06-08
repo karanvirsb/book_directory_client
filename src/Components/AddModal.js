@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { useGlobalContext } from "../Helper/AppContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { axiosPrivate } from "../Api/axios";
@@ -39,23 +38,20 @@ const AddModal = () => {
             const form = getJsonData(e.target);
             form["created"] = true;
             form["image_type"] = imageType;
+
             setBooks((prev) => [...prev, form]);
+
             closeModal();
+
             toast.success("Added the book");
             return;
         }
         try {
-            // const res = await axiosPrivate.post(
-            //     "/api/books/add",
-            //     getFormData(e.target),
-            //     {
-            //         headers: { "Content-Type": "multipart/form-data" },
-            //     }
-            //     );
             closeModal();
+
             const form = getFormData(e.target);
             form.append("image_type", imageType);
-            console.log(form);
+
             toast.promise(
                 axiosPrivate.post("/api/books/add", form, {
                     headers: { "Content-Type": "multipart/form-data" },
@@ -64,9 +60,14 @@ const AddModal = () => {
                     pending: "Adding book",
                     success: "Book has been added",
                     error: "Could not add the book",
+                },
+                {
+                    onClose: () => {
+                        window.location.reload();
+                    },
+                    autoClose: 5000,
                 }
             );
-            // alert(message.message);
         } catch (err) {
             if (err?.response?.status === 403) {
                 navigate("/login", {
