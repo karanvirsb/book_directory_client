@@ -53,8 +53,8 @@ const AddModal = () => {
             //     }
             //     );
             closeModal();
-            const form = getJsonData(e.target);
-            form["image_type"] = imageType;
+            const form = getFormData(e.target);
+            form.append("image_type", imageType);
             console.log(form);
             toast.promise(
                 axiosPrivate.post("/api/books/add", form, {
