@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../Helper/AppContext";
 import useGetRoles from "../Hooks/useGetRoles";
 
 function Book({ bid, image, title, author = [], refs }) {
     let navigate = useNavigate();
     const { verifyRoles } = useGetRoles();
-    const { books } = useGlobalContext();
+
     return (
         <figure
             ref={refs}
