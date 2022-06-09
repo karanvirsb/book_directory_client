@@ -1,0 +1,31 @@
+.pageNotFound_section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.pageNotFound_section div {
+    background-color: whitesmoke;
+    border: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.pageNotFound_section h1 {
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: clamp(1.25rem, 1vw + 0.5rem, 2rem);
+}
+
+.goBack_btn {
+    background-color: hsl(240, 60%, 51%);
+    color: white;
+}
