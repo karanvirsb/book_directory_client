@@ -11,7 +11,7 @@ function AppProvider({ children }) {
     });
 
     const openModal = ({ type, book }) => {
-        console.log(type);
+        document.body.style.overflowY = "hidden";
         if (type === "ADD") {
             setModalSettings({ open: true, type: type, book: {} });
             return;
