@@ -23,6 +23,7 @@ function AppProvider({ children }) {
     };
 
     const closeModal = () => {
+        document.body.style.overflowY = "auto";
         setModalSettings({ open: false, type: "", book: {} });
     };
 
