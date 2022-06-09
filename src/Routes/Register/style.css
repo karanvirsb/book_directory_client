@@ -11,7 +11,7 @@
     border-radius: 8px;
     box-shadow: 1px 2px 4px black;
     padding: 1rem 0.75rem;
-    width: clamp(250px, 25vw, 400px);
+    width: 450px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -101,4 +101,13 @@
 
 .rf_loginBtn:hover {
     color: rgb(0, 0, 0);
+}
+
+@media only screen and (max-width: 500px) {
+    .register_section {
+        padding: 1rem;
+    }
+    .register_form {
+        width: 100%;
+    }
 }
