@@ -5,6 +5,8 @@ import BookDetailsUser from "./BookDetails/book-details-user";
 import Login from "./Login/login";
 import Register from "./Register/register";
 import SuccessRegistration from "./SuccessPage/success-registration";
+import PageNotFound from "./PageNotFound/page_not_found";
+import Unauthorized from "./Unauthorized/unauthorized";
 
 export {
     Home,
@@ -14,4 +16,6 @@ export {
     Login,
     Register,
     SuccessRegistration,
+    PageNotFound,
+    Unauthorized,
 };
