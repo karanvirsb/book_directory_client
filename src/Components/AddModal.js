@@ -32,6 +32,7 @@ const AddModal = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!isImageValid) {
+            toast.error("Image is not valid", { toastId: 1 });
             return;
         }
         if (verifyRoles([2000])) {
