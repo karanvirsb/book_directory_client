@@ -14,6 +14,8 @@ import {
     Login,
     Register,
     SuccessRegistration,
+    PageNotFound,
+    Unauthorized,
 } from "./Routes";
 import RequireAuth from "./Components/RequireAuth";
 
@@ -128,7 +130,11 @@ function App() {
                     </Route>
                 </Route>
                 {/* Catch all other routes */}
-                <Route path='*' element={<div>404 Not Found</div>}></Route>
+                <Route
+                    path='/unauthorized'
+                    element={<Unauthorized></Unauthorized>}
+                ></Route>
+                <Route path='*' element={<PageNotFound></PageNotFound>}></Route>
             </Routes>
         </Router>
     );
