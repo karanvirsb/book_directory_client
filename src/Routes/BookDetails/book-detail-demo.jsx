@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
+import Spinner from "../../Components/Spinner";
 import { useGlobalContext } from "../../Helper/AppContext";
 import useAxiosPrivate from "../../Hooks/useAxiosPrivate";
 import "./style.css";
@@ -43,7 +44,7 @@ function DemoBookDetails() {
     return (
         <section className='detail_section'>
             {isLoading ? (
-                <div className='loading'>loading...</div>
+                <Spinner></Spinner>
             ) : (
                 <>
                     <div className='button_container'>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Spinner from "../../Components/Spinner";
 import { useGlobalContext } from "../../Helper/AppContext";
 import useGetBook from "../../Hooks/useGetBook";
 import "./style.css";
@@ -24,9 +25,9 @@ function BookDetails() {
     return (
         <section className='detail_section'>
             {isError ? (
-                <div className='error'>error</div>
+                <div className='error'>Something went wrong</div>
             ) : isLoading ? (
-                <div className='loading'>loading...</div>
+                <Spinner></Spinner>
             ) : (
                 <>
                     <div className='button_container'>

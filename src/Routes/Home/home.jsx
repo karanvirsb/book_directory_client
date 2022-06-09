@@ -4,6 +4,7 @@ import { debounce } from "../../Helper/debounce";
 import { useGlobalContext } from "../../Helper/AppContext";
 import useBookSearch from "../../Hooks/useBookSearch";
 import "./style.css";
+import Spinner from "../../Components/Spinner";
 
 function Home() {
     const [query, setQuery] = useState("");
@@ -88,11 +89,11 @@ function Home() {
             </div>
             <section className='book_section'>
                 {isError ? (
-                    <div className='error'>Error</div>
+                    <div className='error'>Something went wrong</div>
                 ) : loading ? (
-                    <div className='loading'>Loading</div>
+                    <Spinner></Spinner>
                 ) : books.length === 0 ? (
-                    <div>No Results</div>
+                    <div className='noResults'>No Results</div>
                 ) : (
                     <div className='book_container'>
                         {books.map((book, index) => {
