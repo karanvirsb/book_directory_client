@@ -47,7 +47,9 @@ const DeleteModal = ({ book }) => {
                 {
                     onClose: () => {
                         navigate("/admin");
+                        window.location.reload();
                     },
+                    autoClose: 5000,
                 }
             );
         } catch (err) {
