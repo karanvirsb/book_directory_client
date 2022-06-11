@@ -29,7 +29,7 @@ Start the server
   npm run start
 ```
 
-Go to http://localhost:3000 in your browser and start searching. 
+Go to http://localhost:3000 in your browser and start searching. <br/>
 Important that under Api in axios you change teh BASE_URL to point to http://localhost:8000
 
 ## How to search
