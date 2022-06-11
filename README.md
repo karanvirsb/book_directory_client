@@ -4,7 +4,7 @@ A website to find a variety of books and their details. For the admin it allows 
 
 ## Run Locally
 
-Clone the project
+Clone the project <br/>
 Also Clone the backend [here](https://github.com/karanvirsb/book_directory_server)
 
 ```bash
