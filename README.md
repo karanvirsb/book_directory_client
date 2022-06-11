@@ -69,4 +69,6 @@ Important that under Api in axios you change teh BASE_URL to point to http://loc
 5. CRUD operations
 
 ## How it looks
-
+![Login Page](https://github.com/karanvirsb/book_directory_client/blob/main/src/Assets/Images/loginPage.jpeg)
+![Home Page for admin](https://github.com/karanvirsb/book_directory_client/blob/main/src/Assets/Images/home-admin.jpeg)
+![Details Page](https://github.com/karanvirsb/book_directory_client/blob/main/src/Assets/Images/bookDetailPage.jpeg)
