@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Book Finder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A website to find a variety of books and their details. For the admin it allows them to create new books, update books, read the books and delete books. 
 
-## Available Scripts
+## Run Locally
 
-In the project directory, you can run:
+Clone the project
+Also Clone the backend here()
 
-### `npm start`
+```bash
+  git clone https://github.com/karanvirsb/book_directory_client.git
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Go to the project directory
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+  cd book_directory_client
+```
 
-### `npm test`
+Install dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  npm install
+```
 
-### `npm run build`
+Start the server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  npm run start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Go to http://localhost:3000 in your browser and start searching. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How to search
+1. When page loads use the search bar at the top.
+2. You can click on each book which leads to more details
 
-### `npm run eject`
+## How to create books
+1. Login with an administrative account and you will see a blue add book button on the home page
+2. After that fill in the form and submit using the blue Add button.  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How to update and delete
+1. To update a book you will need to click on one of the books which will lead to the details page
+2. From their in the top right you will see a green update button. 
+3. Fill in the form and submit using the Edit button
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. To delete a book you will need to access teh same details page mentioned above (Step 1)
+2. Then in the top right corner you will see a red delete button
+3. A modal will pop up to confirm. 
+4. Click Yes to delete. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## User Stories
+1. User wants to look at books
+2. User wants to search for books
+3. Admin wants to Add Books
+4. Admin wants to Update Books
+5. Admin wants to Delete Books
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Tech Stack
+**Client:** React, CSS
+**Server:** Express, Mongo DB, Node Js, IBM Cloud Object Storage
 
-## Learn More
+## Features
+1. Login with JWT authentication
+2. Register page with accessibility
+3. Authorization of roles such as User, Admin, Editor, Demo Admin
+4. Have Demo Admin to showcase admin work but it is not persistent
+5. CRUD operations
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## How it looks
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
