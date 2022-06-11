@@ -30,6 +30,7 @@ Start the server
 ```
 
 Go to http://localhost:3000 in your browser and start searching. 
+Important that under Api in axios you change teh BASE_URL to point to http://localhost:8000
 
 ## How to search
 1. When page loads use the search bar at the top.
